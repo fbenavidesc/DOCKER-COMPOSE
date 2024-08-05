@@ -1,0 +1,29 @@
+docker exec -it SERVER_SC_SRV1 /bin/bash
+docker exec -it --user root SERVER_SC_SRV1 /bin/bash
+docker exec -it --user root SERVER_SC_SRV2 /bin/bash
+
+yum update -y
+yum install -y nano
+yum install -y vim
+
+
+
+nano /opt/oracle/homes/OraDB21Home1/network/admin/tnsnames.ora
+nano /opt/oracle/homes/OraDB21Home1/network/admin/listener.ora
+
+
+SCSRV2
+
+
+docker exec -it <container_id_or_name> /bin/bash
+
+
+SCSRV2=localhost:1521/SCSRV2
+SCPDB=
+(DESCRIPTION =
+  (ADDRESS = (PROTOCOL = TCP)(HOST = 0.0.0.0)(PORT = 1521))
+  (CONNECT_DATA =
+    (SERVER = DEDICATED)
+    (SERVICE_NAME = SCPDB)
+  )
+)
